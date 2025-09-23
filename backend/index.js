@@ -3,11 +3,13 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const blogRoutes = require('./routes/blogRoutes');
 const authRoutes = require('./routes/authRoutes');
+const cors = require('cors');
 
 dotenv.config();
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/',(req,res) => {
     res.send('Hello client!');
