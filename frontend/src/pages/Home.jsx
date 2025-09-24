@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import API from '../api.js';
+import {Link} from 'react-router-dom';
 
 function Home() {
 
@@ -34,16 +35,16 @@ function Home() {
             ) : (
                 <div className="list-group">
                     {blogs.map((blog) => (
-                        <a
+                        <Link
                             key={blog._id}
-                            href={`/blogs/${blog._id}`}
+                            to={`/blogs/${blog._id}`}
                             className="list-group-item list-group-item-action"
                         >
                             <h4 className="mb-1">{blog.title}</h4>
                             <h6 className="text-muted">{blog.sub_title}</h6>
                             <p className="mb-1">{blog.content.substring(0, 100)}...</p>
                             <small>By {blog.author}</small>
-                        </a>
+                        </Link>
                     ))}
                 </div>
             )}
