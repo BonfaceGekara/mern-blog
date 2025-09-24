@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
 import API from "../api";
 
 function BlogDetails() {
+
+    const navigate = useNavigate();
+
     const { id } = useParams();
     const [blog, setBlog] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -29,6 +32,11 @@ function BlogDetails() {
 
     return (
         <div className="container mt-4">
+            <div className="my-4">
+                <button className="btn btn-secondary" onClick={() => navigate("/")}>
+                    ← Back to Home
+                </button>
+            </div>
             <h2>{blog.title}</h2>
             <h5 className="text-muted">{blog.sub_title}</h5>
             <p className="mt-3">{blog.content}</p>
