@@ -7,6 +7,9 @@ function Navbar() {
     const token = localStorage.getItem('token');
     const isLoggedIn = !!token;
 
+    const user = JSON.parse(localStorage.getItem('user'));
+    console.log(user.name);
+
     const handleLogout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
