@@ -7,13 +7,14 @@ function Register() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const[name, setName] = useState("");
     const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            await API.post("/auth/register", { email, password });
+            await API.post("/auth/register", { name, email, password });
             navigate("/login");
         } catch (err) {
             if (err.response && err.response.data.message) {
@@ -30,6 +31,17 @@ function Register() {
             {error && <p className="text-danger">{error}</p>}
 
             <form onSubmit={handleSubmit}>
+
+                <div className="mb-3">
+                    <label className="form-label">Name</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                    />
+                </div>
 
                 <div className="mb-3">
                     <label className="form-label">Email</label>
